@@ -1,30 +1,111 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal setup for building React applications with TypeScript using Vite. It includes features such as Hot Module Replacement (HMR) and ESLint rules to ensure code quality.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Follow these instructions to set up and run the project locally.
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Before you begin, ensure you have the following installed on your machine:
 
-- Configure the top-level `parserOptions` property like this:
+-   Node.js (version >= 18.x)
+-   npm or yarn
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### Installation
+
+1. Clone the repository to your local machine:
+
+    ```bash
+    git clone <repository-url>
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd <project-directory>
+    ```
+
+3. Install dependencies using npm:
+
+    ```bash
+    npm install
+    ```
+
+    or using yarn:
+
+    ```bash
+    yarn install
+    ```
+
+### Development Server
+
+To start the development server, run the following command:
+
+```bash
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+or
+
+```bash
+yarn dev
+```
+
+The app will run in development mode with Hot Module Replacement (HMR) enabled. Open [http://localhost:5173](http://localhost:5173) in your browser to view the application.
+
+### Building for Production
+
+To build the application for production, run:
+
+```bash
+npm run build
+```
+
+or
+
+```bash
+yarn build
+```
+
+This command generates a production-optimized build of your application in the `dist` directory.
+
+## Folder Structure
+
+The project structure follows a standard React application layout:
+
+```
+.
+├── public/            # Public assets
+├── src/               # Source files
+│   ├── ssets/         # Images and logos
+│   ├── components/    # React components
+│   ├── pages/         # React pages
+│   ├── services/      # Api requests
+│   ├── shared/        # Contexts and hooks
+│   ├── types/         # Typescript annotations
+│   ├── utils/         # Utility functions and helpers
+│   ├── App.tsx        # Main application component
+│   └── main.tsx       # Entry point of the application
+├── .eslintrc.js       # ESLint configuration
+├── .gitignore         # Git ignore file
+├── package.json       # Project metadata and dependencies
+└── README.md          # Project documentation
+```
+
+### Libs
+
+Here are the technologies/libraries used in this project:
+
+-   React
+-   Vite
+-   TypeScript
+-   MUI
+-   Axios
+-   React-query
+-   React-router-dom
+
+## Contributing
+
+If you'd like to contribute to this project, please fork the repository and submit a pull request with your changes. Make sure to follow the existing coding style and conventions.
