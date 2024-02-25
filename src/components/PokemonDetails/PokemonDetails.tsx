@@ -3,7 +3,6 @@ import { styled } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import Box from "@mui/system/Box";
 import Paper from "@mui/material/Paper";
-// import Button from "@mui/material/Button";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";

@@ -28,9 +28,6 @@ export const useSearch = () => {
 
     const handleSearch = (query: string) => {
         setSearchQuery(query);
-        if (query !== "") {
-            // Optionally handle additional logic here, such as clearing any search results
-        }
     };
 
     return { searchQuery, handleSearch };
