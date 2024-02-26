@@ -33,6 +33,13 @@ export const findEngLang = (arr: any[]) => {
 };
 
 export const formatText = (text: string) => {
-    text = text.replace(/\f/g, " ").replace(/-/g, " ");
-    return text;
+    return (text = text.replace(/\f/g, " ").replace(/-/g, " "));
+};
+
+export const formatStats = (text: string, hpCase: boolean = true) => {
+    let formattedText = text.replace(/[\f-]/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
+    if (hpCase && text.toLowerCase() === "hp") {
+        formattedText = "HP";
+    }
+    return formattedText;
 };

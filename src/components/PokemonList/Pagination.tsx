@@ -25,14 +25,12 @@ const Pagination: React.FC<PaginationProps> = ({ onNext, onPrev, hasNext, hasPre
                 spacing={12}
             >
                 <StyledButton
-                    color="primary"
                     onClick={onPrev}
                     disabled={!hasPrev}
                 >
                     Previous
                 </StyledButton>
                 <StyledButton
-                    color="primary"
                     onClick={onNext}
                     disabled={!hasNext}
                 >

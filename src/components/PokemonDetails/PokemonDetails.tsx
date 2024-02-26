@@ -6,32 +6,37 @@ import Paper from "@mui/material/Paper";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
-// Hooks
+// Router
 import { Link } from "react-router-dom";
+// Hooks
 import { useFetchPokemonById } from "../../shared/hooks/useFetchPokemonById";
 // Components
 import { PokemonTabs } from "./index";
-import { ErrorMessage, StyledButton } from "../shared/index";
-import { Loader } from "../shared/index";
-// Shared
+import { ErrorMessage, StyledButton, Loader } from "../shared/index";
+// Utils
 import { Type } from "../../types/pokemons";
 import { capitalizeFirstLetter, colors } from "../../utils/utils";
+
+const StyledBox = styled(Box)({
+    display: "flex",
+    flexDirection: "column",
+    gap: "4rem",
+});
+
+const Item = styled(Paper)(() => ({
+    display: "flex",
+    flexDirection: "column",
+    paddingBottom: "4rem",
+}));
+
+const ColoredContainer = styled(Box)({
+    padding: "6px 10px",
+    borderRadius: "1rem",
+});
 
 const PokemonDetails: React.FC<{ pokemonId: string }> = ({ pokemonId }) => {
     const { data, isLoading, isError } = useFetchPokemonById(pokemonId);
     const mobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"));
-
-    const StyledBox = styled(Box)({
-        display: "flex",
-        flexDirection: "column",
-        gap: "4rem",
-    });
-
-    const Item = styled(Paper)(() => ({
-        display: "flex",
-        flexDirection: "column",
-        paddingBottom: "4rem",
-    }));
 
     const Section = styled(Box)({
         display: "flex",
@@ -39,17 +44,12 @@ const PokemonDetails: React.FC<{ pokemonId: string }> = ({ pokemonId }) => {
         paddingLeft: mobile ? "0" : "3rem",
     });
 
-    const ColoredContainer = styled(Box)({
-        padding: "6px 10px",
-        borderRadius: "1rem",
-    });
-
     if (isLoading) {
         return <Loader />;
     }
 
     if (isError) {
-        return <ErrorMessage>This pokemon doesn't exist in our database! Try again.</ErrorMessage>;
+        return <ErrorMessage>This Pokemon doesn't exist in our database. Try again!</ErrorMessage>;
     }
 
     return (
@@ -67,8 +67,6 @@ const PokemonDetails: React.FC<{ pokemonId: string }> = ({ pokemonId }) => {
                             src={data?.sprites.front_default}
                             alt={data?.name}
                             loading="lazy"
-                            width={200}
-                            height={200}
                             style={{
                                 width: mobile ? "100px" : "200px",
                                 height: mobile ? "100px" : "200px",

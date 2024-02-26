@@ -1,7 +1,8 @@
-import { ReactNode } from "react";
 // MUI imports
-import Button, { ButtonProps } from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
+// React
+import { ReactNode } from "react";
 
 interface StyledButtonProps extends ButtonProps {
     children: ReactNode;

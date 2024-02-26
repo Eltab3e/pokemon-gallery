@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 // Components
 import { ErrorMessage, Loader } from "../shared";
 import { PokemonCard, Pagination } from "./index";
-// Shared
+// Utils
 import { PokemonResult } from "../../types/pokemons";
 // Hooks
 import { useState } from "react";
@@ -49,6 +49,10 @@ const PokemonList: React.FC = () => {
         }
     };
 
+    if (isLoading) {
+        return <Loader />;
+    }
+
     if (isError) {
         return <ErrorMessage>Oops, Unknown Error Occurred!</ErrorMessage>;
     }
@@ -59,30 +63,26 @@ const PokemonList: React.FC = () => {
                 container
                 rowSpacing={4}
             >
-                {isLoading ? (
-                    <Loader />
-                ) : (
-                    data?.results.map((pokemon: PokemonResult) => {
-                        // Extract pokemon id from url
-                        const urlParts = pokemon.url.split("/");
-                        const id = urlParts[urlParts.length - 2];
+                {data?.results.map((pokemon: PokemonResult) => {
+                    // Extract pokemon id from url
+                    const urlParts = pokemon.url.split("/");
+                    const id = urlParts[urlParts.length - 2];
 
-                        return (
-                            <Grid
-                                item
-                                container
-                                justifyContent="center"
-                                xs={12}
-                                sm={6}
-                                md={4}
-                                lg={4}
-                                key={pokemon.name}
-                            >
-                                <PokemonDetailsFetcher id={id} />
-                            </Grid>
-                        );
-                    })
-                )}
+                    return (
+                        <Grid
+                            item
+                            container
+                            justifyContent="center"
+                            xs={12}
+                            sm={6}
+                            md={4}
+                            lg={4}
+                            key={pokemon.name}
+                        >
+                            <PokemonDetailsFetcher id={id} />
+                        </Grid>
+                    );
+                })}
 
                 {!isLoading && (
                     <Pagination

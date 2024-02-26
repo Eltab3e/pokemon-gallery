@@ -1,4 +1,4 @@
-// Router
+// Hooks
 import { useParams } from "react-router-dom";
 // Components
 import { PokemonDetails } from "../components/PokemonDetails/index";

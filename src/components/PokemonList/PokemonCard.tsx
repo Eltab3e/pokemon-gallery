@@ -5,11 +5,16 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import CardActionArea from "@mui/material/CardActionArea";
-// Hooks
+// Router
 import { Link } from "react-router-dom";
-// Shared
+// Utils
 import { PokemonDetailsResponse, PokemonFlavorResponse } from "../../types/pokemons";
 import { capitalizeFirstLetter, colors, findEngLang, formatText } from "../../utils/utils";
+
+interface PokemonCardProps {
+    details: PokemonDetailsResponse;
+    flavors: PokemonFlavorResponse;
+}
 
 const StyledCard = styled(Box)({
     width: 220,
@@ -21,11 +26,6 @@ const ColoredContainer = styled(Box)({
     padding: "6px 10px",
     borderRadius: "1rem",
 });
-
-interface PokemonCardProps {
-    details: PokemonDetailsResponse;
-    flavors: PokemonFlavorResponse;
-}
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ details, flavors }) => {
     const englishFlavor = findEngLang(flavors?.flavor_text_entries);

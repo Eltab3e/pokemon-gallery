@@ -19,7 +19,14 @@ const NotFound = () => {
     }, [countdown]);
 
     return (
-        <div>
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+            }}
+        >
             <h1>Page Not Found</h1>
             <p>You will be redirected in {countdown} seconds...</p>
         </div>

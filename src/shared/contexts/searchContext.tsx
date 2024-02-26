@@ -26,9 +26,5 @@ export const SearchProvider = ({ children }: any) => {
 export const useSearch = () => {
     const { searchQuery, handleSearch: setSearchQuery } = useContext(SearchContext);
 
-    const handleSearch = (query: string) => {
-        setSearchQuery(query);
-    };
-
-    return { searchQuery, handleSearch };
+    return { searchQuery, handleSearch: setSearchQuery };
 };

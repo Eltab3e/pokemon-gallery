@@ -1,5 +1,3 @@
-// Hooks
-import { useState } from "react";
 // MUI imports
 import { useMediaQuery } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -10,8 +8,10 @@ import Tabs from "@mui/material/Tabs";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
-// Shared
-import { formatText } from "../../utils/utils";
+// Hooks
+import { useState } from "react";
+// Utils
+import { formatStats } from "../../utils/utils";
 import { PokemonDetailsResponse } from "../../types/pokemons";
 
 interface PokemonTabsProps {
@@ -53,7 +53,6 @@ const a11yProps = (index: number) => {
 const Text = styled(Typography)({
     fontWeight: "600",
     paddingBottom: "1rem",
-    textTransform: "uppercase",
 });
 
 const PokemonTabs: React.FC<PokemonTabsProps> = ({ data }) => {
@@ -110,7 +109,7 @@ const PokemonTabs: React.FC<PokemonTabsProps> = ({ data }) => {
                                     md={10}
                                     lg={9}
                                 >
-                                    <Text>{formatText(stat.stat.name)}</Text>
+                                    <Text>{formatStats(stat.stat.name)}</Text>
                                 </Grid>
 
                                 <Grid
@@ -135,7 +134,7 @@ const PokemonTabs: React.FC<PokemonTabsProps> = ({ data }) => {
                         {data?.moves &&
                             data?.moves.map((move) => (
                                 <ListItem key={move.move.name}>
-                                    <Text>{formatText(move.move.name)}</Text>
+                                    <Text>{formatStats(move.move.name)}</Text>
                                 </ListItem>
                             ))}
                     </List>
@@ -149,7 +148,7 @@ const PokemonTabs: React.FC<PokemonTabsProps> = ({ data }) => {
                         {data?.abilities &&
                             data?.abilities.map((ability) => (
                                 <ListItem key={ability.ability.name}>
-                                    <Text>{formatText(ability.ability.name)}</Text>
+                                    <Text>{formatStats(ability.ability.name)}</Text>
                                 </ListItem>
                             ))}
                     </List>

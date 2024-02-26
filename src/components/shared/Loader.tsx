@@ -1,58 +1,11 @@
 // MUI imports
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import CircularProgress, { CircularProgressProps } from "@mui/material/CircularProgress";
+import CircularProgress from "@mui/material/CircularProgress";
 // Hooks
 import { useEffect, useState } from "react";
 
-function CircularProgressWithLabel(props: CircularProgressProps & { value: number }) {
-    return (
-        <Box
-            sx={{
-                top: 0,
-                left: 0,
-                bottom: 0,
-                right: 0,
-                position: "absolute",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-            }}
-        >
-            <CircularProgress
-                variant="determinate"
-                {...props}
-                size={200}
-                color="secondary"
-                sx={{
-                    "& .MuiCircularProgress-circle": {
-                        strokeWidth: 1,
-                    },
-                }}
-            />
-            <Box
-                sx={{
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    right: 0,
-                    position: "absolute",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                }}
-            >
-                <Typography
-                    variant="caption"
-                    component="div"
-                    color="text.secondary"
-                >{`${Math.round(props.value)}%`}</Typography>
-            </Box>
-        </Box>
-    );
-}
-
-export default function CircularWithValueLabel() {
+export default function CircularLoadingWithLabel() {
     const [progress, setProgress] = useState(5);
 
     useEffect(() => {
@@ -64,5 +17,57 @@ export default function CircularWithValueLabel() {
         };
     }, []);
 
-    return <CircularProgressWithLabel value={progress} />;
+    return (
+        <Box
+            sx={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 999,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+            }}
+        >
+            <Box
+                sx={{
+                    position: "relative",
+                    width: "250px",
+                    height: "250px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}
+            >
+                <CircularProgress
+                    variant="determinate"
+                    value={progress}
+                    size={250}
+                    color="secondary"
+                    sx={{
+                        "& .MuiCircularProgress-circle": {
+                            strokeWidth: 0.75,
+                        },
+                    }}
+                />
+                <Box
+                    sx={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        textAlign: "center",
+                    }}
+                >
+                    <Typography
+                        variant="caption"
+                        component="div"
+                        color="text.secondary"
+                    >{`${Math.round(progress)}%`}</Typography>
+                </Box>
+            </Box>
+        </Box>
+    );
 }
