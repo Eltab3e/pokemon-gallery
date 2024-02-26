@@ -65,7 +65,7 @@ const PokemonTabs: React.FC<PokemonTabsProps> = ({ data }) => {
 
     return (
         <Box>
-            <Box sx={{ paddingLeft: mobile ? 3 : 6 }}>
+            <Box sx={{ paddingLeft: mobile ? 0 : 6 }}>
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -96,30 +96,26 @@ const PokemonTabs: React.FC<PokemonTabsProps> = ({ data }) => {
                             <Grid
                                 container
                                 item
-                                xs={9}
+                                xs={8}
                                 sm={5}
-                                md={3}
+                                md={4}
                                 lg={3}
                                 key={stat.stat.name}
+                                sx={{ display: "flex", justifyContent: "space-between" }}
                             >
                                 <Grid
                                     item
-                                    xs={10}
-                                    sm={9}
-                                    md={10}
-                                    lg={9}
+                                    xs={9}
+                                    sm={8}
+                                    sx={{
+                                        borderRight: 2,
+                                        borderColor: "divider",
+                                    }}
                                 >
                                     <Text>{formatStats(stat.stat.name)}</Text>
                                 </Grid>
 
-                                <Grid
-                                    item
-                                    sx={{
-                                        borderLeft: 2,
-                                        borderColor: "divider",
-                                        paddingLeft: 1,
-                                    }}
-                                >
+                                <Grid item>
                                     <Typography>{stat.base_stat}</Typography>
                                 </Grid>
                             </Grid>
